@@ -130,5 +130,5 @@
 
 ### 14、vsnprintf函数原型：int vsnprintf(char *str, size_t size, const char *format, va_list ap);
 #### 将可变参数格式化输出到一个字符数组
-#### 将ap以format的形式输入到str所指代的字符串中。
+#### 将ap以format的形式输入到str所指代的字符串中；
 
