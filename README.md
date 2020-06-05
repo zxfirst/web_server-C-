@@ -99,3 +99,36 @@
 ##### S_ISBLK (st_mode)        是否为先进先出
 ##### S_ISSOCK (st_mode)   是否为socket
 
+### 10、mmap函数原型：void *mmap(void *addr, size_t length, int prot, int flags,int fd, off_t offset);
+#### addr:建立映射区的首地址，由Linux内核指定。使用时，直接传递NULL。
+#### length:欲创建映射区的大小。
+#### prot:映射区权限PROT_READ、PROT_WRITE、PROT_READ|PROT_WRITE。
+#### flags:标志位参数(常用于设定更新物理区域、设置共享、创建匿名映射区)；
+##### MAP_SHARED:会将映射区所做的操作反映到物理设备（磁盘）上。
+##### MAP_PRIVATE:映射区所做的修改不会反映到物理设备。
+#### fd：用来建立映射区的文件描述符。
+#### offset：映射文件的偏移(4k的整数倍)。
+#### 返回值成功返回创建的映射区的首地址；失败返回宏MAP_FAILED。
+
+### 11、mummap函数原型：int munmap(void *start, size_t length);
+#### start为mmap起始位置，length为mmap的长度
+#### 返回值成功为0，失败返回-1.
+
+### 12、writev函数原型：ssize_t writev(int fd,const struct iovec * vector,int count);
+#### 将vector指向的内存内容写入fd
+#### fd为文件描述符
+#### struct iovec {
+#### void      *iov_base;      /* starting address of buffer */
+#### size_t    iov_len;        /* size of buffer */
+#### };
+#### count为vector的个数
+#### 成功返回写的字节数，失败返回-1.
+
+### 13、va_list类型；void va_start(va_list ap, last_arg)；void va_end(va_list ap)；type va_arg(va_list ap, type)
+#### last_arg是最后一个传递给函数的已知的固定参数，即省略号之前的参数;
+#### ap对应省略号所指代的内容。
+
+### 14、vsnprintf函数原型：int vsnprintf(char *str, size_t size, const char *format, va_list ap);
+#### 将可变参数格式化输出到一个字符数组
+#### 将ap以format的形式输入到str所指代的字符串中。
+
